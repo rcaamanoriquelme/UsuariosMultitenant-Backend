@@ -3,6 +3,7 @@ package com.tesoreria.cyl.conciliacion.mediosdepago.consultatransacciones.servic
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tesoreria.cyl.conciliacion.mediosdepago.consultatransacciones.model.PwCadena;
@@ -79,7 +80,7 @@ public class FiltrosService {
 	}
 	
 	public List<PwEstadoCon> getListadoEstadoCon() {
-		return pwEstadoConRepository.findByActivo("1");
+		return pwEstadoConRepository.findByActivo("1", Sort.by(Sort.Direction.ASC, "ecnDescripcion"));
 	}
 	
 	public List<PwEstadoLiq> getListadoEstadoLiq() {

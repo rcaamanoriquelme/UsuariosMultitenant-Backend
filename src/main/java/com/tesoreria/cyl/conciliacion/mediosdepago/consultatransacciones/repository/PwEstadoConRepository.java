@@ -2,6 +2,7 @@ package com.tesoreria.cyl.conciliacion.mediosdepago.consultatransacciones.reposi
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,7 +14,7 @@ import com.tesoreria.cyl.conciliacion.mediosdepago.consultatransacciones.project
 @Repository
 public interface PwEstadoConRepository extends CrudRepository<PwEstadoCon, String>{
 	
-	List<PwEstadoCon> findByActivo(String activo);
+	List<PwEstadoCon> findByActivo(String activo, Sort orden);
 	
 	@Query(value = "SELECT ecn.ecnEstadoCon as ecnestado, ecn.ecnDescripcion as ecndescripcion FROM PwTransEstadoCon tec "
 			+ "JOIN PwEstadoCon ecn ON ecn.ecnEstadoCon = tec.id.tecEstadoDestino "
