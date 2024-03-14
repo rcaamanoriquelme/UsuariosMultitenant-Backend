@@ -10,6 +10,8 @@ import com.tesoreria.cyl.conciliacion.mediosdepago.consultatransacciones.model.P
 @Repository
 public interface PwOperadorRepository extends CrudRepository<PwOperador, Long>{
 	
+	List<PwOperador> findAll();
+	
 	List<PwOperador> findByIdEmisor(Integer emisor);
 
 }

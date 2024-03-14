@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,12 +19,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(schema = "cyl", name = "pw_operador")
+@Table(schema = "cylm", name = "pw_operador")
 public class PwOperador {
 	
 	@Id
 	@Column(name= "id_operador", nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "sq_id_operador", sequenceName = "sq_id_operador", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_id_operador")
 	private Long idOperador;
 	
 	@Column(name = "id_emisor")

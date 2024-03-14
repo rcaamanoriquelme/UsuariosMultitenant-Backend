@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,16 +21,16 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-@Table(schema = "cyl", name = "pw_local")
+@Table(schema = "cylm", name = "pw_local")
 
 public class Pwlocal implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	
 	@Id
 	@Column(name = "id_local")
+	@SequenceGenerator(name = "seq_id_local", sequenceName = "seq_id_local", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_id_local")
 	private Long id_local;
 	
     @Column(name = "loc_codigo")

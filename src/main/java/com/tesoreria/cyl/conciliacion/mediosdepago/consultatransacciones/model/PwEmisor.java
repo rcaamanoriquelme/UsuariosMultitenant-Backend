@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(schema = "cyl", name = "pw_emisor")
+@Table(schema = "cylm", name = "pw_emisor")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,7 +27,8 @@ private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name = "id_emisor", length = 22, nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "seq_id_emisor", sequenceName = "seq_id_emisor", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_id_emisor")
 	private Long idEmisor;
 	
 	@Column(name = "emi_codigo", length = 10)
